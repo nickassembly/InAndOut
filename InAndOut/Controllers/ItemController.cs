@@ -25,5 +25,10 @@ namespace InAndOut.Controllers
             return View(objList);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
     }
 }
