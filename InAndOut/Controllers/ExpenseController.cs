@@ -9,8 +9,6 @@ namespace InAndOut.Controllers
 {
     public class ExpenseController : Controller
     {
-        // TODO: Create Model for expenses based on items
-        // TODO: Create Migration and Update Database
         // TODO: Build Controller with actions, Expenses View
     }
 }
