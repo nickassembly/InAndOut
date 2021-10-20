@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,10 @@ namespace InAndOut.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [DisplayName("Expense")]
         public string ExpenseName { get; set; }
-        public decimal ExpenseAmount { get; set; }
+        public int Amount { get; set; }
 
 
     }
