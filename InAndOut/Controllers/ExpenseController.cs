@@ -38,6 +38,7 @@ namespace InAndOut.Controllers
         {
             if (ModelState.IsValid)
             {
+                obj.ExpenseTypeId = 1; // temporary solution need better way to assign expense types
                 _db.Expenses.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");

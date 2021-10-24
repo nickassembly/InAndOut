@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InAndOut.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211022135135_AddedExpenseTypeNameRequired")]
-    partial class AddedExpenseTypeNameRequired
+    [Migration("20211024132003_NewMigrationsExpenseType")]
+    partial class NewMigrationsExpenseType
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,12 @@ namespace InAndOut.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ExpenseTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ExpenseTypeId");
 
                     b.ToTable("Expenses");
                 });
@@ -74,6 +79,17 @@ namespace InAndOut.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("InAndOut.Models.Expense", b =>
+                {
+                    b.HasOne("InAndOut.Models.ExpenseType", "ExpenseType")
+                        .WithMany()
+                        .HasForeignKey("ExpenseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExpenseType");
                 });
 #pragma warning restore 612, 618
         }
